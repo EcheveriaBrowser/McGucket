@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Seized</title>
+    <style>
+        @font-face {
+            font-family: 'CipherFontA';
+            src: url('CipherFontA.ttf') format('truetype');
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #222;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #D32F2F;
+            color: white;
+            font-size: 3em;
+            padding: 20px 0;
+            width: 100%;
+        }
+
+        .content {
+            padding: 20px;
+            font-size: 1.2em;
+            line-height: 1.5;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .red-text {
+            color: red;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .red-text.glitch {
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .red-text.glitch:before,
+        .red-text.glitch:after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: red;
+            z-index: -1;
+            animation: glitch 1s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0, 0); }
+            20% { transform: translate(-5px, -5px); }
+            40% { transform: translate(5px, 5px); }
+            60% { transform: translate(-5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .seals-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+
+        .seal {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .seal p {
+            font-size: 0.8em;
+            margin-top: 10px;
+            color: #ccc;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: #333;
+            border: 1px solid #888;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .popup h2 {
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+
+        .popup p {
+            margin-bottom: 20px;
+        }
+
+        .close-btn {
+            background-color: #D32F2F;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 500;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #888;
+        }
+
+        .video-container {
+            text-align: center;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            border: 1px solid #444;
+        }
+
+        .font-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #D32F2F;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            z-index: 1001;
+        }
+
+        .cipher-font {
+            font-family: 'CipherFontA', Arial, sans-serif !important;
+        }
+
+        .cipher-font .font-toggle-btn {
+            font-family: Arial, sans-serif !important;
+        }
+
+        .default-font .font-toggle-btn {
+            font-family: 'CipherFontA', Arial, sans-serif !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        THIS WEBSITE HAS BEEN SEIZED
+    </div>
+    <div class="content">
+        <p>McGucket Labs domain has been seized by the Cosmic Bureau of Nonsense and Digital Shenanigans (CBDNS) in accordance with an intergalactic request or warrant issued by the Cult of Cipherthology District court for the northern district of Orchard Lake, Kansas. These seizures were possible because I can do whatever I want whenever I want.</p>
+        
+        <p>McGucket Labs and its Administrators are being prosecuted for the violations of:</p>
+        <ul>
+            <li>Title -8382883 C.O.C : <span class="red-text glitch" data-text="BROKEN DEAL">BROKEN DEAL</span></li>
+            <li>Title -77764663 C.O.C : Well, I just don't like it</li>
+        </ul>
+
+        <div class="seals-container">
+            <div class="seal" id="sealCipher">
+                <img src="seal_of_cipher.png" alt="Seal of Cipher">
+                <p>Seal of Cipher</p>
+            </div>
+            <div class="seal" id="sealBillamerica">
+                <img src="cipherthology_states.png" alt="Cipherthology States">
+                <p>Cipherthology states of billamerica</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        This website is in no way related to Disney or Gravity Falls and is just a fan-made site. There are hidden things though.
+    </div>
+
+    <!-- Overlay for popups -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Popup for Seal of Cipher -->
+    <div class="popup" id="popupCipher">
+        <h2>Seal of Cipher</h2>
+        <p>This is the description for the Seal of Cipher.</p>
+        <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+
+    <!-- Popup for Cipherthology States of Billamerica -->
+    <div class="popup" id="popupBillamerica">
+        <h2>Cipherthology States of Billamerica</h2>
+        <p>This is the description for Cipherthology States of Billamerica.</p>
+        <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+
+    <!-- Popup for Broken Deal with Video -->
+    <div class="popup" id="popupBrokenDeal">
+        <h2>BROKEN DEAL</h2>
+        <div class="video-container">
+            <video id="brokenDealVideo" autoplay loop muted>
+                <source src="bills.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+
+    <!-- Font Toggle Button -->
+    <button class="font-toggle-btn" id="fontToggleBtn" onclick="toggleFont()">Toggle Font</button>
+
+    <script>
+        // Function to open the popup
+        function openPopup(popupId) {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById(popupId).style.display = 'block';
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.querySelectorAll('.popup').forEach(popup => {
+                popup.style.display = 'none';
+            });
+            // Stop the video if the "BROKEN DEAL" popup is closed
+            document.getElementById('brokenDealVideo').pause();
+        }
+
+        // Event listeners for the seals
+        document.getElementById('sealCipher').addEventListener('click', function() {
+            openPopup('popupCipher');
+        });
+
+        document.getElementById('sealBillamerica').addEventListener('click', function() {
+            openPopup('popupBillamerica');
+        });
+
+        document.querySelector('.red-text').addEventListener('click', function() {
+            openPopup('popupBrokenDeal');
+        });
+
+        // Toggle font function
+        function toggleFont() {
+            document.body.classList.toggle('cipher-font');
+            document.body.classList.toggle('default-font');
+        }
+
+        // Caesar Cipher Hidden Code
+        function decodeCaesarCipher(str, shift) {
+            return str.split('').map(char => {
+                if (char.match(/[a-z]/i)) {
+                    const code = char.charCodeAt();
+                    const base = code >= 65 && code <= 90 ? 65 : 97;
+                    return String.fromCharCode(((code - base + shift) % 26 + 26) % 26 + base);
+                }
+                return char;
+            }).join('');
+        }
+
+        const hiddenMessage = "L fdvdu phvvdjh lv d vhfuhw phvvdjh"; // Shift 3
+        console.log("Hidden message (Caesar Cipher):", decodeCaesarCipher(hiddenMessage, -3));
+    </script>
+</body>
+</html>
